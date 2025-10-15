@@ -11,6 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.google.analysis.cpu.CpuSample
+import com.google.analysis.memory.MemoryAnalysis
 import com.hcf.apg.ui.theme.APGTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,6 +29,8 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+        CpuSample
+        MemoryAnalysis
     }
 }
 
