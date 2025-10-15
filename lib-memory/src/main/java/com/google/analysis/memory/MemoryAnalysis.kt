@@ -85,7 +85,7 @@ object MemoryAnalysis {
     }
 
     fun analyzeLargeString() {
-        val s = "0"
+        var s = "0"
         for (i in 0..9999999) {
             s += i
         }
@@ -129,7 +129,7 @@ object MemoryAnalysis {
         }
     }
 
-    fun analyzeWriteLogFile() {
+    fun analyzeWriteLogFile(context: Context) {
         val dir = File(context.filesDir, "memory")
         if (!dir.exists()) {
             dir.mkdirs()
