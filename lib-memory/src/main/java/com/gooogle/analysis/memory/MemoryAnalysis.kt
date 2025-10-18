@@ -1,8 +1,7 @@
-package com.google.analysis.memory
+package com.gooogle.analysis.memory
 
 import android.content.Context
 import android.os.SystemClock
-import android.util.Log
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -36,13 +35,13 @@ object MemoryAnalysis {
         }
     }
 
-    //oom
-    fun analyzeOom() {
+    //oom wtf
+    fun analyzeOom(interval: Long = 1000) {
         // 分析内存
         while (true) {
             val obj = ByteArray(1024 * 1024)
             cache.add(obj)
-            SystemClock.sleep(1000)
+            SystemClock.sleep(interval)
         }
     }
 
@@ -65,55 +64,25 @@ object MemoryAnalysis {
         }
     }
 
-    fun analyzeThread() {
-        repeat(1000) {
-            executors.execute {
-                val date = sdf.get().format(System.currentTimeMillis())
-                Log.v("Application", date)
-            }
-        }
-    }
-
-    fun analyzeMaxThread() {
+    fun analyzeMaxThread(interval: Long = 1000) {
         val executors = Executors.newCachedThreadPool()
         repeat(100000) {
             executors.execute {
                 val date = sdf.get().format(System.currentTimeMillis())
-                Log.v("Application", date)
             }
+            SystemClock.sleep(interval)
         }
     }
 
-    fun analyzeLargeString() {
+    fun analyzeLargeString(interval: Long = 10) {
         var s = "0"
         for (i in 0..9999999) {
             s += i
+            SystemClock.sleep(interval)
         }
     }
 
-    //deadLock
-    fun analyzeThreadLock() {
-        val lock1 = Any()
-        val lock2 = Any()
-        Thread {
-            synchronized(lock1) {
-                SystemClock.sleep(1000)
-                synchronized(lock2) {
-                    Log.v("Application", "thread 1 lock 2")
-                }
-            }
-        }.start()
-        Thread {
-            synchronized(lock2) {
-                SystemClock.sleep(1000)
-                synchronized(lock1) {
-                    Log.v("Application", "thread 2 lock 1")
-                }
-            }
-        }.start()
-    }
-
-    //oom
+    //oom, wtf
     fun analyzeStackOverflow() {
         fact(100000)
     }
@@ -122,21 +91,21 @@ object MemoryAnalysis {
         return n * fact(n - 1) // 没有 n == 1 时的返回条件
     }
 
-    fun analyzeHashMap() {
+    fun analyzeHashMap(count: Int = 100000) {
         val set = HashMap<Data, Int>()
-        repeat(100000) {
+        repeat(count) {
             set.put(Data(), 0)
         }
     }
 
-    fun analyzeWriteLogFile(context: Context) {
+    fun analyzeWriteLogFile(context: Context, count: Int = 1000000) {
         val dir = File(context.filesDir, "memory")
         if (!dir.exists()) {
             dir.mkdirs()
         }
         val file = File(dir, "large_log.txt")
-        val fos = FileOutputStream(file)
-        repeat(1000000) {
+        val fos = FileOutputStream(file, true)
+        repeat(count) {
             val date = sdf.get().format(System.currentTimeMillis())
             fos.write("hello world $it $date".toByteArray())
         }
