@@ -31,7 +31,7 @@ internal object Analysis {
     private const val NAME_SAMPLE_MEMORY = "memory"
     private var ctx: Context? = null
     private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
-    private var loggable: Boolean = true
+    private var loggable: Boolean = false
 
 
     fun init(context: Context) {
