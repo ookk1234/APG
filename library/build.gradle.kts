@@ -55,6 +55,11 @@ afterEvaluate {
                 artifactId = "library"
                 version = "1.0.0"
             }
+
+            withType<MavenPublication> {
+                // 移除 Gradle 自动添加的 sources.jar artifact
+                artifacts.removeIf { it.classifier == "sources" }
+            }
         }
     }
 }
