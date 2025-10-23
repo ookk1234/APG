@@ -12,9 +12,6 @@ import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.TimeUnit
 
 
-/*
- * Created by Zachary on 2025/10/15.
- */
 object MemoryAnalysis {
     private val cache: MutableList<Any> = ArrayList<Any>()
     private val executors by lazy {
