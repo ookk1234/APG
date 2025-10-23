@@ -5,9 +5,7 @@ import android.content.ContentValues
 import android.database.Cursor
 import android.net.Uri
 
-/*
- * Created by Zachary on 2025/10/16.
- */
+
 class InitProvider: ContentProvider() {
     override fun delete(
         uri: Uri,
