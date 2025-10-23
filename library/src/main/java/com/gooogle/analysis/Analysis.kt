@@ -20,9 +20,7 @@ import java.io.IOException
 import kotlin.system.exitProcess
 
 
-/*
- * Created by Zachary on 2025/10/16.
- */
+
 @SuppressLint("StaticFieldLeak")
 internal object Analysis {
     private const val KEY_TIME = "time"
