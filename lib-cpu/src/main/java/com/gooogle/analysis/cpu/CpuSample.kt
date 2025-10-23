@@ -3,9 +3,7 @@ package com.gooogle.analysis.cpu
 import java.util.concurrent.Executors
 import kotlin.math.pow
 
-/*
- * Created by Zachary on 2025/10/15.
- */
+
 object CpuSample {
 
     fun sampleCpu() {
