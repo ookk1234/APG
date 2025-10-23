@@ -42,8 +42,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation(project(":lib-memory"))
-    implementation(project(":lib-cpu"))
+    //implementation(project(":lib-memory"))
+    //implementation(project(":lib-cpu"))
 }
 
 afterEvaluate {
@@ -55,11 +55,17 @@ afterEvaluate {
                 artifactId = "library"
                 version = "1.0.0"
             }
-
-            withType<MavenPublication> {
-                // 移除 Gradle 自动添加的 sources.jar artifact
-                artifacts.removeIf { it.classifier == "sources" }
-            }
         }
+    }
+}
+
+// 禁用所有生成 sources.jar 的任务
+tasks.withType<org.gradle.jvm.tasks.Jar> {
+    // 检查任务的分类器（classifier）。sourcesJar 任务通常将其设置为 'sources'。
+    if (archiveClassifier.getOrNull() == "sources") {
+        // 将任务设置为禁用状态
+        enabled = false
+        // 打印信息，确认任务被禁用，有助于调试
+        println("Disabling sourcesJar task: $name")
     }
 }
