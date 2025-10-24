@@ -54,6 +54,8 @@ afterEvaluate {
                 groupId = "com.gooogle.analysis"
                 artifactId = "library"
                 version = "1.0.0"
+
+                artifact(tasks.getByName("bundleReleaseAar"))
             }
         }
     }
