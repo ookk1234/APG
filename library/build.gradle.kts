@@ -55,7 +55,7 @@ afterEvaluate {
                 artifactId = "library"
                 version = "1.0.0"
 
-                artifact(tasks.getByName("bundleReleaseAar"))
+                //artifact(tasks.getByName("bundleReleaseAar"))
             }
         }
     }
