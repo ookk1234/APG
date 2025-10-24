@@ -50,7 +50,7 @@ afterEvaluate {
     publishing {
         publications {
             create<MavenPublication>("release") {
-                from(components["release"])
+                from(components.getByName("release"))
                 groupId = "com.gooogle.analysis"
                 artifactId = "library"
                 version = "1.0.0"
