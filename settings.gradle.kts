@@ -24,5 +24,5 @@ dependencyResolutionManagement {
 rootProject.name = "APG"
 include(":app")
 include(":library")
-include(":lib-cpu")
-include(":lib-memory")
+//include(":lib-cpu")
+//include(":lib-memory")
