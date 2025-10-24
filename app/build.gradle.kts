@@ -57,6 +57,6 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
     implementation(project(":library"))
-    implementation(project(":lib-cpu"))
-    implementation(project(":lib-memory"))
+    //implementation(project(":lib-cpu"))
+    //implementation(project(":lib-memory"))
 }
