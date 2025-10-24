@@ -31,6 +31,14 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    publishing {
+        singleVariant("release") {
+            // 如果想发布 sources/javadoc，可在这里配置
+            //withSourcesJar()
+            //withJavadocJar()
+        }
+    }
 }
 
 dependencies {
@@ -50,7 +58,7 @@ afterEvaluate {
     publishing {
         publications {
             create<MavenPublication>("release") {
-                from(components.getByName("release"))
+                from(components["release"])
                 groupId = "com.gooogle.analysis"
                 artifactId = "library"
                 version = "1.0.0"
