@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    id("maven-publish")
+    //id("maven-publish")
 }
 
 android {
@@ -41,7 +41,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
-afterEvaluate {
+/*afterEvaluate {
     publishing {
         publications {
             create<MavenPublication>("release") {
@@ -57,4 +57,4 @@ afterEvaluate {
             }
         }
     }
-}
+}*/
